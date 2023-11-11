@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NCQ.Todo.App.Domain.Entities;
+using NCQ.Todo.App.Persistence.ModelConfiguration;
+using NCQ.Todo.App.Persistence.Seeding;
 
 namespace NCQ.Todo.App.Persistence.Context
 {
@@ -9,7 +11,13 @@ namespace NCQ.Todo.App.Persistence.Context
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            new DbInitializer(modelBuilder).Seed();
+        }
+
         public DbSet<User> Users { get; set; }
     }
-
 }

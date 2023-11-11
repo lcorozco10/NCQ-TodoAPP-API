@@ -55,9 +55,9 @@ builder.Services.AddVersionedApiExplorer(setup =>
 
 var app = builder.Build();
 
-//var serviceScope = app.Services.CreateScope();
-//var dataContext = serviceScope.ServiceProvider.GetService<DataContext>();
-//dataContext?.Database.EnsureCreated();
+/*var serviceScope = app.Services.CreateScope();
+var dataContext = serviceScope.ServiceProvider.GetService<DataContext>();
+dataContext?.Database.EnsureCreated();*/
 
 
 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
