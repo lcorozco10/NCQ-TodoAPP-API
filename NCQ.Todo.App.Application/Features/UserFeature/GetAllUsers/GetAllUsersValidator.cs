@@ -6,7 +6,7 @@ namespace NCQ.Todo.App.Application.Features.UserFeature.GetAllUsers
     {
         public GetAllUsersValidator()
         {
-            // RuleFor(x => x.Name).NotEmpty().MinimumLength(3).MaximumLength(50);
+            RuleFor(x => x.Name).NotEmpty().MinimumLength(3).MaximumLength(50);
         }
     }
 }

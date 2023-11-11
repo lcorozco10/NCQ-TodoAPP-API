@@ -16,9 +16,9 @@ namespace NCQ.Todo.App.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<GetAllUsersResponse>>> GetAll(CancellationToken cancellationToken)
+        public async Task<ActionResult<List<GetAllUsersResponse>>> GetAll([FromQuery] GetAllUsersRequest request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new GetAllUsersRequest(), cancellationToken);
+            var response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
         }
     }

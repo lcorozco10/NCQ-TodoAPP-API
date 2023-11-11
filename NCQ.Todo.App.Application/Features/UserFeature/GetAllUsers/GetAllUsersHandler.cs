@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using NCQ.Todo.App.Application.Common.Exceptions;
 using NCQ.Todo.App.Application.Repositories;
 
 namespace NCQ.Todo.App.Application.Features.UserFeature.GetAllUsers
@@ -19,7 +20,7 @@ namespace NCQ.Todo.App.Application.Features.UserFeature.GetAllUsers
 
         public async Task<GetAllUsersResponse> Handle(GetAllUsersRequest request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            throw new BadRequestException("Invalid opeation");
             /*var user = _mapper.Map<User>(request);
             _userRepository.Create(user);
             await _unitOfWork.Save(cancellationToken);

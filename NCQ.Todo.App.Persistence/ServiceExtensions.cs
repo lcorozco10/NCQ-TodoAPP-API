@@ -11,7 +11,7 @@ namespace NCQ.Todo.App.Persistence
     {
         public static void ConfigurePersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("ConnectionString");
+            var connectionString = configuration.GetConnectionString("TodoDB");
             services.AddDbContextPool<DataContext>(opt => opt.UseSqlServer(connectionString));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

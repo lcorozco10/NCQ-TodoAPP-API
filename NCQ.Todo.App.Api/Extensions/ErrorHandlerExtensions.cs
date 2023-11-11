@@ -27,11 +27,25 @@ namespace NCQ.Todo.App.Api.Extensions
                         _ => (int)HttpStatusCode.InternalServerError
                     };
 
-                    var errorResponse = new
+                    object errorResponse = new
                     {
                         statusCode = context.Response.StatusCode,
                         message = contextFeature.Error.GetBaseException().Message
                     };
+
+                    if (contextFeature.Error is BadRequestException)
+                    {
+                        var exception = (BadRequestException)contextFeature.Error;
+                        if (exception.Errors.Length > 0)
+                        {
+                            errorResponse = new
+                            {
+                                statusCode = context.Response.StatusCode,
+                                message = contextFeature.Error.GetBaseException().Message,
+                                errors = exception.Errors
+                            };
+                        }
+                    }
 
                     await context.Response.WriteAsync(JsonSerializer.Serialize(errorResponse));
                 });
