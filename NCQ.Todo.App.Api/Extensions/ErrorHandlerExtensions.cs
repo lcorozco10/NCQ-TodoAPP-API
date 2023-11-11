@@ -52,5 +52,4 @@ namespace NCQ.Todo.App.Api.Extensions
             });
         }
     }
-
 }
