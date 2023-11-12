@@ -15,8 +15,8 @@ namespace NCQ.Todo.App.Persistence.Seeding
         public void Seed()
         {
             modelBuilder.Entity<Collaborator>().HasData(
-                   new Collaborator() { Id = Guid.NewGuid(), Name = "Luis Orozco" },
-                   new Collaborator() { Id = Guid.NewGuid(), Name = "Carlos Velasquez" }
+                   new Collaborator() { Id = new Guid("f6c25425-c52e-4022-a82f-0241537767aa"), Name = "Luis Orozco" },
+                   new Collaborator() { Id = new Guid("0e33f791-6bf2-4657-b8d3-157e0746e8f9"), Name = "Carlos Velasquez" }
                    );
         }
     }

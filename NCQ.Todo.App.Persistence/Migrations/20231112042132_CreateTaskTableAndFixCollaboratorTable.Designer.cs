@@ -12,8 +12,8 @@ using NCQ.Todo.App.Persistence.Context;
 namespace NCQ.Todo.App.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231112034435_CreateCollaboratorTable")]
-    partial class CreateCollaboratorTable
+    [Migration("20231112042132_CreateTaskTableAndFixCollaboratorTable")]
+    partial class CreateTaskTableAndFixCollaboratorTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,7 +51,7 @@ namespace NCQ.Todo.App.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Collaborators");
 
                     b.HasData(
                         new
@@ -66,6 +66,61 @@ namespace NCQ.Todo.App.Persistence.Migrations
                             DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Name = "Carlos Velasquez"
                         });
+                });
+
+            modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Task", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CollaboratorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTimeOffset>("DateCreated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset?>("DateDeleted")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTimeOffset?>("DateUpdated")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PripriorityCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StateCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CollaboratorId");
+
+                    b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Task", b =>
+                {
+                    b.HasOne("NCQ.Todo.App.Domain.Entities.Collaborator", "Collaborator")
+                        .WithMany("Tasks")
+                        .HasForeignKey("CollaboratorId");
+
+                    b.Navigation("Collaborator");
+                });
+
+            modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Collaborator", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

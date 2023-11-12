@@ -13,7 +13,7 @@ namespace NCQ.Todo.App.Persistence.Repositories
 
         public Task<Collaborator?> GetByEmail(string email, CancellationToken cancellationToken)
         {
-            return Context.Users.FirstOrDefaultAsync(x => x.Name == email, cancellationToken);
+            return Context.Collaborators.FirstOrDefaultAsync(x => x.Name == email, cancellationToken);
         }
     }
 }
