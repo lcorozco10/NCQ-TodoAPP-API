@@ -7,7 +7,7 @@ namespace NCQ.Todo.App.Application.Features.UserFeature.GetAllUsers
     {
         public GetAllUsersMapper()
         {
-            CreateMap<User, GetAllUsersResponse>();
+            CreateMap<Collaborator, GetAllUsersResponse>();
         }
     }
 }

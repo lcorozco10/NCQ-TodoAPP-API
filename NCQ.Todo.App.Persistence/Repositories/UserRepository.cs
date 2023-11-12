@@ -5,15 +5,15 @@ using NCQ.Todo.App.Persistence.Context;
 
 namespace NCQ.Todo.App.Persistence.Repositories
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<Collaborator>, IUserRepository
     {
         public UserRepository(DataContext context) : base(context)
         {
         }
 
-        public Task<User?> GetByEmail(string email, CancellationToken cancellationToken)
+        public Task<Collaborator?> GetByEmail(string email, CancellationToken cancellationToken)
         {
-            return Context.Users.FirstOrDefaultAsync(x => x.Email == email, cancellationToken);
+            return Context.Users.FirstOrDefaultAsync(x => x.Name == email, cancellationToken);
         }
     }
 }

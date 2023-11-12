@@ -2,8 +2,8 @@
 
 namespace NCQ.Todo.App.Application.Repositories
 {
-    public interface IUserRepository : IBaseRepository<User>
+    public interface IUserRepository : IBaseRepository<Collaborator>
     {
-        Task<User?> GetByEmail(string email, CancellationToken cancellationToken);
+        Task<Collaborator?> GetByEmail(string email, CancellationToken cancellationToken);
     }
 }

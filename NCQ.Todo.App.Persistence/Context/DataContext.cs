@@ -14,10 +14,10 @@ namespace NCQ.Todo.App.Persistence.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new CollaboratorConfiguration());
             new DbInitializer(modelBuilder).Seed();
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Collaborator> Collaborators { get; set; }
     }
 }
