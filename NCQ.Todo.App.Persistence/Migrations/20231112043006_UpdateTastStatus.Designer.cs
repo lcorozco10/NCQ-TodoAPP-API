@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NCQ.Todo.App.Persistence.Context;
 
@@ -11,9 +12,11 @@ using NCQ.Todo.App.Persistence.Context;
 namespace NCQ.Todo.App.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231112043006_UpdateTastStatus")]
+    partial class UpdateTastStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,35 +68,6 @@ namespace NCQ.Todo.App.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Note", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTimeOffset>("DateCreated")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset?>("DateDeleted")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTimeOffset?>("DateUpdated")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<Guid>("TaskId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TaskId");
-
-                    b.ToTable("Notes");
-                });
-
             modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Task", b =>
                 {
                     b.Property<Guid>("Id")
@@ -135,15 +109,6 @@ namespace NCQ.Todo.App.Persistence.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Note", b =>
-                {
-                    b.HasOne("NCQ.Todo.App.Domain.Entities.Task", "Task")
-                        .WithMany("Notes")
-                        .HasForeignKey("TaskId");
-
-                    b.Navigation("Task");
-                });
-
             modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Task", b =>
                 {
                     b.HasOne("NCQ.Todo.App.Domain.Entities.Collaborator", "Collaborator")
@@ -156,11 +121,6 @@ namespace NCQ.Todo.App.Persistence.Migrations
             modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Collaborator", b =>
                 {
                     b.Navigation("Tasks");
-                });
-
-            modelBuilder.Entity("NCQ.Todo.App.Domain.Entities.Task", b =>
-                {
-                    b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618
         }

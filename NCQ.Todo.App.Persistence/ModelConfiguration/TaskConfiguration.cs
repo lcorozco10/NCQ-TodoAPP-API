@@ -9,7 +9,7 @@ namespace NCQ.Todo.App.Persistence.ModelConfiguration
         {
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Description).HasMaxLength(400).IsRequired();
-            builder.Property(c => c.StateCode).IsRequired();
+            builder.Property(c => c.Status).IsRequired();
             builder.Property(c => c.PripriorityCode).IsRequired();
             builder.Property(c => c.StartDate).IsRequired();
             builder.Property(c => c.EndDate).IsRequired();
