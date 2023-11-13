@@ -14,9 +14,10 @@ namespace NCQ.Todo.App.Persistence.Repositories
             Context = context;
         }
 
-        public void Create(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            Context.Add(entity);
+            await Context.Set<T>().AddAsync(entity);
+            return entity;
         }
 
         public void Update(T entity)
@@ -39,6 +40,10 @@ namespace NCQ.Todo.App.Persistence.Repositories
         {
             return Context.Set<T>().ToListAsync(cancellationToken);
         }
-    }
 
+        public Task<bool> Exist(Guid id, CancellationToken cancellationToken)
+        {
+            return Context.Set<T>().AnyAsync(x => x.Id == id, cancellationToken);
+        }
+    }
 }

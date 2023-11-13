@@ -6,8 +6,11 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.CreateTask
     {
         public CreateTaskMapper()
         {
-            // CreateMap<Domain.Entities.Task, GetAllTasksResponse>();
-            // CreateMap<Domain.Entities.Note, GetAllTaskNoteResponse>();
+            CreateMap<Domain.Entities.Task, CreateTaskRequest>();
+            CreateMap<CreateTaskRequest, Domain.Entities.Task>();
+
+            CreateMap<Domain.Entities.Task, CreateTaskResponse>();
+            CreateMap<CreateTaskResponse, Domain.Entities.Task>();
         }
     }
 }
