@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using NCQ.Todo.App.Api.Models;
 using NCQ.Todo.App.Application.Features.TaskFeature.CreateTask;
 using NCQ.Todo.App.Application.Features.TaskFeature.GetAllTasks;
+using NCQ.Todo.App.Application.Features.TaskFeature.UpdateTask;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace NCQ.Todo.App.Api.Controllers.V1
@@ -40,6 +41,32 @@ namespace NCQ.Todo.App.Api.Controllers.V1
         [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(OkResultData<CreateTaskResponse>))]
         public async Task<IActionResult> Create([FromBody] CreateTaskRequest request, CancellationToken cancellationToken)
         {
+            var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Update a task record
+        /// </summary>
+        /// <param name="requestBody"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(OkResultData<UpdateTaskResponse>))]
+        public async Task<IActionResult> Edit([FromRoute] Guid id, [FromBody] UpdateTaskRequestDto requestBody, CancellationToken cancellationToken)
+        {
+            var request = new UpdateTaskRequest
+            {
+                Id = id,
+                Description = requestBody.Description,
+                Status = requestBody.Status,
+                PripriorityCode = requestBody.PripriorityCode,
+                CollaboratorId = requestBody.CollaboratorId,
+                StartDate = requestBody.StartDate,
+                EndDate = requestBody.EndDate,
+                Notes = requestBody.Notes
+            };
             var response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
         }
