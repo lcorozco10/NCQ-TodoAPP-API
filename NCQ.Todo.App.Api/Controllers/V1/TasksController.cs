@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NCQ.Todo.App.Api.Models;
 using NCQ.Todo.App.Application.Features.TaskFeature.CreateTask;
+using NCQ.Todo.App.Application.Features.TaskFeature.DeleteTask;
 using NCQ.Todo.App.Application.Features.TaskFeature.GetAllTasks;
 using NCQ.Todo.App.Application.Features.TaskFeature.UpdateTask;
 using Swashbuckle.AspNetCore.Annotations;
@@ -68,6 +69,20 @@ namespace NCQ.Todo.App.Api.Controllers.V1
                 Notes = requestBody.Notes
             };
             var response = await _mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Delte a task record
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(OkResultData<UpdateTaskResponse>))]
+        public async Task<IActionResult> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(new DeleteTaskRequest { Id = id }, cancellationToken);
             return Ok(response);
         }
     }
