@@ -31,7 +31,7 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.DeleteTask
                 throw new BadRequestException("La tarea no puede ser eliminada en estado En Progreso");
             }
 
-            // Mapping request to Task model
+            // Soft Delete Strategy used
             task.DateDeleted = DateTime.Now;
 
             // Add Task record to the context

@@ -23,12 +23,13 @@ namespace NCQ.Todo.App.Api.Controllers.V1
         /// Get all tasks
         /// </summary>
         /// <param name="cancellationToken"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         [HttpGet]
         [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(OkResultData<List<GetAllTasksResponse>>))]
-        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAll([FromQuery] GetAllTasksRequest request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new GetAllTasksRequest(), cancellationToken);
+            var response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
         }
 
@@ -73,7 +74,7 @@ namespace NCQ.Todo.App.Api.Controllers.V1
         }
 
         /// <summary>
-        /// Delte a task record
+        /// Delete a task record
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <param name="id"></param>

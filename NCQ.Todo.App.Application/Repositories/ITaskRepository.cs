@@ -5,6 +5,6 @@ namespace NCQ.Todo.App.Application.Repositories
 {
     public interface ITaskRepository : IBaseRepository<Task>
     {
-        Task<List<TaskDto>> GetTaskWithNotes(CancellationToken cancellationToken);
+        Task<List<TaskDto>> GetTaskWithNotes(TaskFilterDto filter, CancellationToken cancellationToken);
     }
 }
