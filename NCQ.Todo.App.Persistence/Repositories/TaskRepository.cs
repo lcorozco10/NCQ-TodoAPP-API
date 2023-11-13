@@ -23,11 +23,7 @@ namespace NCQ.Todo.App.Persistence.Repositories
                 EndDate = task.EndDate,
                 CollaboratorId = task.CollaboratorId,
                 CollaboratorName = task.Collaborator != null ? task.Collaborator.Name : null,
-                Notes = task.Notes.Select(note => new NoteDto
-                {
-                    Id = note.Id,
-                    Content = note.Content,
-                }).ToList()
+                Notes = task.Notes ?? string.Empty
             }).ToListAsync(cancellationToken);
         }
     }

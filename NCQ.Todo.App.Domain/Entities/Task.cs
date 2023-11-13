@@ -9,9 +9,9 @@ namespace NCQ.Todo.App.Domain.Entities
         public TaskPripriority PripriorityCode { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string? Notes { get; set; }
         public Guid? CollaboratorId { get; set; }
         public Collaborator? Collaborator { get; set; }
-        public ICollection<Note> Notes { get; set; } = new List<Note>();
     }
 
     public enum TaskStatus { Pending, InProgress, Completed }

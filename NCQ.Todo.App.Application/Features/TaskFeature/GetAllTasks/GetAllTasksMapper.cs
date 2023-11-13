@@ -8,10 +8,7 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.GetAllTasks
         public GetAllTasksMapper()
         {
             CreateMap<Domain.Entities.Task, GetAllTasksResponse>();
-            CreateMap<Domain.Entities.Note, GetAllTaskNoteResponse>();
-
             CreateMap<TaskDto, GetAllTasksResponse>();
-            CreateMap<NoteDto, GetAllTaskNoteResponse>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NCQ.Todo.App.Api.Models;
+using NCQ.Todo.App.Application.Features.TaskFeature.CreateTask;
 using NCQ.Todo.App.Application.Features.TaskFeature.GetAllTasks;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -17,7 +18,7 @@ namespace NCQ.Todo.App.Api.Controllers.V1
         }
 
         /// <summary>
-        /// Get all collaborators
+        /// Get all tasks
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
@@ -26,6 +27,20 @@ namespace NCQ.Todo.App.Api.Controllers.V1
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(new GetAllTasksRequest(), cancellationToken);
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Create a new task record
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(OkResultData<CreateTaskResponse>))]
+        public async Task<IActionResult> Create([FromBody] CreateTaskRequest request, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
         }
     }

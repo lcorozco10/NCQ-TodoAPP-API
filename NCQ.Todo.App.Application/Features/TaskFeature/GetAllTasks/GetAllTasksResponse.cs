@@ -12,12 +12,6 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.GetAllTasks
         public DateTime EndDate { get; set; }
         public Guid? CollaboratorId { get; set; }
         public string? CollaboratorName { get; set; }
-        public List<GetAllTaskNoteResponse> Notes { get; set; } = new List<GetAllTaskNoteResponse>();
-    }
-
-    public sealed record GetAllTaskNoteResponse
-    {
-        public Guid Id { get; set; }
-        public string Content { get; set; } = string.Empty;
+        public string Notes { get; set; } = string.Empty;
     }
 }

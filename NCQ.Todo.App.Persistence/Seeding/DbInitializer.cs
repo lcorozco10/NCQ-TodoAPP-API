@@ -36,7 +36,8 @@ namespace NCQ.Todo.App.Persistence.Seeding
                     PripriorityCode = TaskPripriority.Medium,
                     StartDate = new DateTime(2023, 10, 8),
                     EndDate = new DateTime(2023, 11, 27),
-                    CollaboratorId = new Guid("f6c25425-c52e-4022-a82f-0241537767aa")
+                    CollaboratorId = new Guid("f6c25425-c52e-4022-a82f-0241537767aa"),
+                    Notes = "Validate open source mockup tools app"
                 },
                 new Domain.Entities.Task()
                 {
@@ -46,7 +47,8 @@ namespace NCQ.Todo.App.Persistence.Seeding
                     PripriorityCode = TaskPripriority.Low,
                     StartDate = new DateTime(2023, 11, 5),
                     EndDate = new DateTime(2023, 11, 25),
-                    CollaboratorId = new Guid("0e33f791-6bf2-4657-b8d3-157e0746e8f9")
+                    CollaboratorId = new Guid("0e33f791-6bf2-4657-b8d3-157e0746e8f9"),
+                    Notes = "Create mockup login page style"
                 },
                 new Domain.Entities.Task()
                 {
@@ -56,7 +58,8 @@ namespace NCQ.Todo.App.Persistence.Seeding
                     PripriorityCode = TaskPripriority.Medium,
                     StartDate = new DateTime(2023, 10, 18),
                     EndDate = new DateTime(2023, 11, 5),
-                    CollaboratorId = new Guid("0e33f791-6bf2-4657-b8d3-157e0746e8f9")
+                    CollaboratorId = new Guid("0e33f791-6bf2-4657-b8d3-157e0746e8f9"),
+                    Notes = "Question and answer customer"
                 },
                 new Domain.Entities.Task()
                 {
@@ -66,7 +69,8 @@ namespace NCQ.Todo.App.Persistence.Seeding
                     PripriorityCode = TaskPripriority.High,
                     StartDate = new DateTime(2023, 11, 13),
                     EndDate = new DateTime(2023, 11, 18),
-                    CollaboratorId = new Guid("71232824-0b3c-47be-b027-c1fb5b38da65")
+                    CollaboratorId = new Guid("71232824-0b3c-47be-b027-c1fb5b38da65"),
+                    Notes = ""
                 },
                 new Domain.Entities.Task()
                 {
@@ -76,17 +80,10 @@ namespace NCQ.Todo.App.Persistence.Seeding
                     PripriorityCode = TaskPripriority.Medium,
                     StartDate = new DateTime(2023, 11, 9),
                     EndDate = new DateTime(2023, 11, 11),
-                    CollaboratorId = new Guid("42f9161f-5dcb-4c9f-b926-3fcd54a3a2b6")
+                    CollaboratorId = new Guid("42f9161f-5dcb-4c9f-b926-3fcd54a3a2b6"),
+                    Notes = ""
                 }
             );
-
-            modelBuilder.Entity<Note>().HasData(
-                new Note() { Id = new Guid("47953270-b6cb-4d75-8168-025885c223db"), Content = "Validate open source mockup tools app", TaskId = new Guid("a0b0c806-d454-482f-9bf3-4f2d958d212b") },
-                new Note() { Id = new Guid("fc74ca35-eb14-42b0-bd41-85d14d2ad9b8"), Content = "Create mockup login page style", TaskId = new Guid("a0b0c806-d454-482f-9bf3-4f2d958d212b") },
-
-                new Note() { Id = new Guid("42088927-ec5d-43ab-9cc3-104ada060aee"), Content = "Question and answer customer", TaskId = new Guid("49ab83dc-f5a5-4c28-98c1-ac03f20e9796") }
-            );
-
         }
     }
 }

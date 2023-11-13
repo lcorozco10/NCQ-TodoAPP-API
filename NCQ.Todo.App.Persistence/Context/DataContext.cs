@@ -22,18 +22,11 @@ namespace NCQ.Todo.App.Persistence.Context
             .HasForeignKey(e => e.CollaboratorId)
             .IsRequired(false);
 
-            modelBuilder.Entity<Task>()
-           .HasMany(e => e.Notes)
-           .WithOne(e => e.Task)
-           .HasForeignKey(e => e.TaskId)
-           .IsRequired(false);
-
             modelBuilder.ApplyConfiguration(new CollaboratorConfiguration());
             new DbInitializer(modelBuilder).Seed();
         }
 
         public DbSet<Collaborator> Collaborators { get; set; }
         public DbSet<Task> Tasks { get; set; }
-        public DbSet<Note> Notes { get; set; }
     }
 }
