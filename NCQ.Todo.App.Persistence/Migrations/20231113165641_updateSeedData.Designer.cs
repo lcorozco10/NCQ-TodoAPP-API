@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NCQ.Todo.App.Persistence.Context;
 
@@ -11,9 +12,11 @@ using NCQ.Todo.App.Persistence.Context;
 namespace NCQ.Todo.App.Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231113165641_updateSeedData")]
+    partial class updateSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,13 +158,6 @@ namespace NCQ.Todo.App.Persistence.Migrations
                             Content = "Create mockup login page style",
                             DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             TaskId = new Guid("a0b0c806-d454-482f-9bf3-4f2d958d212b")
-                        },
-                        new
-                        {
-                            Id = new Guid("42088927-ec5d-43ab-9cc3-104ada060aee"),
-                            Content = "Question and answer customer",
-                            DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            TaskId = new Guid("49ab83dc-f5a5-4c28-98c1-ac03f20e9796")
                         });
                 });
 
@@ -212,54 +208,10 @@ namespace NCQ.Todo.App.Persistence.Migrations
                             CollaboratorId = new Guid("f6c25425-c52e-4022-a82f-0241537767aa"),
                             DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Create login mockup",
-                            EndDate = new DateTime(2023, 11, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PripriorityCode = 1,
-                            StartDate = new DateTime(2023, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("24e34a73-9485-485f-80c4-71cd393a96f7"),
-                            CollaboratorId = new Guid("0e33f791-6bf2-4657-b8d3-157e0746e8f9"),
-                            DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Create database diagram",
                             EndDate = new DateTime(2023, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PripriorityCode = 2,
+                            PripriorityCode = 1,
                             StartDate = new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = 0
-                        },
-                        new
-                        {
-                            Id = new Guid("49ab83dc-f5a5-4c28-98c1-ac03f20e9796"),
-                            CollaboratorId = new Guid("0e33f791-6bf2-4657-b8d3-157e0746e8f9"),
-                            DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Read project spesifications",
-                            EndDate = new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PripriorityCode = 1,
-                            StartDate = new DateTime(2023, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = 2
-                        },
-                        new
-                        {
-                            Id = new Guid("295d9a48-3dc3-4161-9154-6b319d99a16e"),
-                            CollaboratorId = new Guid("71232824-0b3c-47be-b027-c1fb5b38da65"),
-                            DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Create first sprint on Jira",
-                            EndDate = new DateTime(2023, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PripriorityCode = 0,
-                            StartDate = new DateTime(2023, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("91652b59-705c-4e93-9fae-116a48ba3b7a"),
-                            CollaboratorId = new Guid("42f9161f-5dcb-4c9f-b926-3fcd54a3a2b6"),
-                            DateCreated = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
-                            Description = "Set up Net core web API",
-                            EndDate = new DateTime(2023, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PripriorityCode = 1,
-                            StartDate = new DateTime(2023, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = 0
                         });
                 });
 

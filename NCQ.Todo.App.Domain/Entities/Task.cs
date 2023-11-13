@@ -11,7 +11,7 @@ namespace NCQ.Todo.App.Domain.Entities
         public DateTime EndDate { get; set; }
         public Guid? CollaboratorId { get; set; }
         public Collaborator? Collaborator { get; set; }
-        public ICollection<Note> Notes { get; } = new List<Note>();
+        public ICollection<Note> Notes { get; set; } = new List<Note>();
     }
 
     public enum TaskStatus { Pending, InProgress, Completed }
