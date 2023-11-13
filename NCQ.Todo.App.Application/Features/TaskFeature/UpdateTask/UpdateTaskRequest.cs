@@ -5,7 +5,6 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.UpdateTask
 {
     public record UpdateTaskRequestDto
     {
-        public Guid Id { get; set; }
         public string Description { get; set; } = string.Empty;
         public Domain.Entities.TaskStatus Status { get; set; } = Domain.Entities.TaskStatus.Pending;
         public TaskPripriority? PripriorityCode { get; set; }
