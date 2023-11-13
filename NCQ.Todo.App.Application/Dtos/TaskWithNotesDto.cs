@@ -1,8 +1,8 @@
 ﻿using NCQ.Todo.App.Domain.Entities;
 
-namespace NCQ.Todo.App.Application.Features.TaskFeature.GetAllTasks
+namespace NCQ.Todo.App.Application.Dtos
 {
-    public sealed record GetAllTasksResponse
+    public sealed record TaskDto
     {
         public Guid Id { get; set; }
         public string Description { get; set; } = string.Empty;
@@ -12,10 +12,9 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.GetAllTasks
         public DateTime EndDate { get; set; }
         public Guid? CollaboratorId { get; set; }
         public string? CollaboratorName { get; set; }
-        public List<GetAllTaskNoteResponse> Notes { get; set; } = new List<GetAllTaskNoteResponse>();
+        public List<NoteDto> Notes { get; set; } = new List<NoteDto>();
     }
-
-    public sealed record GetAllTaskNoteResponse
+    public sealed record NoteDto
     {
         public Guid Id { get; set; }
         public string Content { get; set; } = string.Empty;

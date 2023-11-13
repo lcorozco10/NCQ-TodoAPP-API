@@ -16,6 +16,7 @@ namespace NCQ.Todo.App.Persistence
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICollaboratorRepository, CollaboratorRepository>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
         }
     }
 }
