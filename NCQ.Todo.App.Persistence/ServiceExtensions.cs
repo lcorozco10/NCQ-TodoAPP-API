@@ -15,7 +15,7 @@ namespace NCQ.Todo.App.Persistence
             services.AddDbContextPool<DataContext>(opt => opt.UseSqlServer(connectionString));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICollaboratorRepository, CollaboratorRepository>();
         }
     }
 }
