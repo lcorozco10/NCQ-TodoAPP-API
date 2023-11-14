@@ -24,8 +24,4 @@
     <ProjectReference Include="..\NCQ.Todo.App.Persistence\NCQ.Todo.App.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
-
 </Project>

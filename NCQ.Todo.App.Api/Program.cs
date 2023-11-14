@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
+using NCQ.Todo.App.Api.Common;
 using NCQ.Todo.App.Api.Extensions;
 using NCQ.Todo.App.Application;
 using NCQ.Todo.App.Persistence;
@@ -26,6 +27,8 @@ builder.Services.AddSwaggerGen(options =>
     // using System.Reflection;
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+    options.SchemaFilter<EnumTypesSchemaFilter>();
 });
 
 builder.Services.ConfigurePersistence(builder.Configuration);
