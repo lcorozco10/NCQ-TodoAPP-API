@@ -6,6 +6,7 @@ using NCQ.Todo.App.Api.Common;
 using NCQ.Todo.App.Api.Extensions;
 using NCQ.Todo.App.Application;
 using NCQ.Todo.App.Persistence;
+using NCQ.Todo.App.Persistence.Context;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -58,9 +59,9 @@ builder.Services.AddVersionedApiExplorer(setup =>
 
 var app = builder.Build();
 
-/*var serviceScope = app.Services.CreateScope();
+var serviceScope = app.Services.CreateScope();
 var dataContext = serviceScope.ServiceProvider.GetService<DataContext>();
-dataContext?.Database.EnsureCreated();*/
+dataContext?.Database.EnsureCreated();
 
 
 var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
