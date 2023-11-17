@@ -36,7 +36,7 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.UpdateTask
                 }
             }
 
-            var task = await _taskRepository.Get(request.Id, cancellationToken);
+            var task = await _taskRepository.Get(request.Id ?? Guid.NewGuid(), cancellationToken);
             if (task == null)
             {
                 throw new NotFoundException($"No se encontro la tarea {request.Id}");
@@ -48,8 +48,8 @@ namespace NCQ.Todo.App.Application.Features.TaskFeature.UpdateTask
             }
 
             // Mapping request to Task model
-            task.Description = request.Description;
-            task.Status = request.Status;
+            task.Description = request.Description ?? "";
+            task.Status = request.Status ?? Domain.Entities.TaskStatus.Pending;
             task.PripriorityCode = request.PripriorityCode ?? Domain.Entities.TaskPripriority.Low;
             task.CollaboratorId = request.CollaboratorId;
             task.StartDate = request.StartDate ?? DateTime.Now;

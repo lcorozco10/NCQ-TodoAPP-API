@@ -61,13 +61,13 @@ namespace NCQ.Todo.App.Api.Controllers.V1
             var request = new UpdateTaskRequest
             {
                 Id = id,
-                Description = requestBody.Description,
-                Status = requestBody.Status,
-                PripriorityCode = requestBody.PripriorityCode,
-                CollaboratorId = requestBody.CollaboratorId,
-                StartDate = requestBody.StartDate,
-                EndDate = requestBody.EndDate,
-                Notes = requestBody.Notes
+                Description = requestBody?.Description,
+                Status = requestBody?.Status,
+                PripriorityCode = requestBody?.PripriorityCode,
+                CollaboratorId = requestBody?.CollaboratorId,
+                StartDate = requestBody?.StartDate,
+                EndDate = requestBody?.EndDate,
+                Notes = requestBody?.Notes
             };
             var response = await _mediator.Send(request, cancellationToken);
             return Ok(response);
