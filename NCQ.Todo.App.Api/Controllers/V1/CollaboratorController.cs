@@ -51,6 +51,7 @@ namespace NCQ.Todo.App.Api.Controllers.V1
 
             var users = new List<UserType>();
 
+            //_cognitoService.AdminCreateUserAsync()
             var usersPaginator = _cognitoService.Paginators.ListUsers(request);
             await foreach (var response in usersPaginator.Responses)
             {

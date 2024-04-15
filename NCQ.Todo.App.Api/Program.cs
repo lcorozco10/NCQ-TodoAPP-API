@@ -1,7 +1,6 @@
 using Amazon;
 using Amazon.CognitoIdentityProvider;
 using Amazon.Extensions.CognitoAuthentication;
-using Amazon.Runtime;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
